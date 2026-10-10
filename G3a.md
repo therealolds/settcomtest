@@ -1,0 +1,3 @@
+_Gli altri vanno con lui quali liberi compagni, per aiutarlo lungo il cammino. Potete tardare, o tornare indietro, o deviare per altri sentieri, a seconda del caso. Più avanti andrete, meno facile sarà ritirarvi; ma sappiate che nessun giuramento e nessun vincolo vi costringe a fare un passo in più di quanto non vogliate_
+
+Durante la giornata di oggi, trova un qualche oggetto o foto che rappresenti come o cosa ti tenga unito al clan.

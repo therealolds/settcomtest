@@ -1,0 +1,3 @@
+_«Una morte meno certa, però», rispose Sam. «Ma io sto andando a Mordor». «Lo so bene, signor Frodo. È naturale che vi andiate. Ed io vi accompagno». «Ora, Sam», disse Frodo, «non ostacolarmi! Gli altri saranno di ritorno da un momento all'altro. Se mi trovano qui, dovrò discutere e spiegare, e non avrò mai più il coraggio o l'occasione di partire. Devo andar via subito; è l'unico modo». «Naturalmente», disse Sam. «Ma non da solo. Vengo anch'io, o non partirete neppure voi. Farò dei buchi in tutte le barche»._
+
+Durante la giornata di oggi, pensa a una volta in cui durante il tuo percorso scout qualcuno si è buttato per te.

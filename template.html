@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ece2c8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12100c" media="(prefers-color-scheme: dark)">
+<meta name="robots" content="noindex">
+<title>__TITOLO__</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sfondo: #ece2c8;
+    --carta: #f8f1de;
+    --inchiostro: #2b2118;
+    --tenue: #6b5a45;
+    --oro: #8a6a1f;
+    --rosso: #7a2318;
+    --bordo: #d6c59c;
+    --ombra: rgba(60, 40, 10, .12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --sfondo: #12100c;
+      --carta: #1c1813;
+      --inchiostro: #ece2cb;
+      --tenue: #a8987c;
+      --oro: #d6b25e;
+      --rosso: #e39a7e;
+      --bordo: #3d3427;
+      --ombra: rgba(0, 0, 0, .45);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+  body {
+    margin: 0;
+    background: var(--sfondo);
+    color: var(--inchiostro);
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  .pagina {
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: max(1.5rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right))
+             max(3rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+  }
+
+  header { text-align: center; margin-bottom: 1.75rem; }
+  h1 {
+    margin: 0;
+    font-family: Cinzel, serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 6vw, 2.3rem);
+    letter-spacing: .04em;
+    line-height: 1.2;
+    color: var(--oro);
+  }
+  h1, .sottotitolo { text-wrap: balance; }
+  .sottotitolo { margin: .3rem 0 0; font-style: italic; color: var(--tenue); }
+
+  /* Il cammino: una tappa per giorno */
+  nav { display: flex; justify-content: center; margin: 0 0 1.75rem; }
+  .tappa {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .3rem;
+    padding: .25rem 0;
+    color: inherit;
+    text-decoration: none;
+  }
+  .tappa::before {
+    content: "";
+    position: absolute;
+    top: calc(.25rem + 1.2rem - 1px);
+    left: -50%;
+    right: 50%;
+    border-top: 2px dotted var(--bordo);
+  }
+  .tappa:first-child::before { display: none; }
+  .cerchio {
+    position: relative;
+    z-index: 1;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--carta);
+    border: 2px solid var(--bordo);
+    color: var(--tenue);
+    font-family: Cinzel, serif;
+    font-weight: 700;
+    transition: background .2s, color .2s;
+  }
+  .cerchio svg { width: 1rem; height: 1rem; }
+  .tappa.aperta .cerchio { border-color: var(--oro); color: var(--oro); }
+  .tappa.aperta:hover .cerchio { background: color-mix(in srgb, var(--oro) 15%, var(--carta)); }
+  .tappa.scelta .cerchio, .tappa.scelta:hover .cerchio { background: var(--oro); color: var(--carta); }
+  .tappa.chiusa { opacity: .55; }
+  .etichetta { white-space: nowrap; font-size: .8rem; line-height: 1.2; text-align: center; color: var(--tenue); }
+
+  article {
+    background: var(--carta);
+    border: 1px solid var(--bordo);
+    border-radius: 6px;
+    padding: clamp(1.25rem, 5vw, 2.5rem);
+    box-shadow: 0 1px 2px var(--ombra), 0 10px 28px var(--ombra);
+  }
+  /* Immagine del giorno, a tutta larghezza in cima alla scheda */
+  .illustrazione {
+    display: block;
+    width: calc(100% + 2 * clamp(1.25rem, 5vw, 2.5rem));
+    max-width: none;
+    height: auto;
+    margin: calc(-1 * clamp(1.25rem, 5vw, 2.5rem)) calc(-1 * clamp(1.25rem, 5vw, 2.5rem)) 1.5rem;
+    border-radius: 5px 5px 0 0;
+    border-bottom: 1px solid var(--bordo);
+  }
+  .giorno {
+    margin: 0;
+    text-align: center;
+    font-family: Cinzel, serif;
+    font-size: .8rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--tenue);
+  }
+  article h2 {
+    margin: .3rem 0 1.5rem;
+    text-align: center;
+    font-family: Cinzel, serif;
+    font-weight: 500;
+    font-size: clamp(1.3rem, 5vw, 1.75rem);
+    line-height: 1.25;
+    color: var(--rosso);
+    text-wrap: balance;
+  }
+  article h2::after { content: "✦"; display: block; margin-top: .5rem; font-size: .85rem; color: var(--oro); }
+  article p { margin: 0 0 .9rem; hyphens: auto; }
+  article h4 { margin: 1.5rem 0 .5rem; font-family: Cinzel, serif; font-weight: 500; }
+  .poesia { width: fit-content; margin: 0 auto 1.75rem; font-style: italic; color: var(--tenue); hyphens: manual; }
+  .poesia span { display: block; padding-left: 1.2em; text-indent: -1.2em; }
+  .sfida {
+    margin-top: 2rem;
+    padding: 1rem 1.25rem;
+    border-left: 3px solid var(--oro);
+    border-radius: 0 4px 4px 0;
+    background: color-mix(in srgb, var(--oro) 9%, transparent);
+  }
+  .sfida h3 { margin: 0 0 .5rem; font-family: Cinzel, serif; font-size: 1.05rem; color: var(--oro); }
+  .sfida > :last-child { margin-bottom: 0; }
+  /* L'attività della giornata, in una scheda separata sotto lo spunto */
+  .attivita {
+    margin-top: 1.25rem;
+    padding: clamp(1.25rem, 5vw, 2rem);
+    border: 1px solid var(--bordo);
+    border-left: 4px solid var(--oro);
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--oro) 9%, var(--carta));
+    box-shadow: 0 1px 2px var(--ombra), 0 10px 28px var(--ombra);
+  }
+  .attivita h3 { margin: 0 0 .75rem; font-family: Cinzel, serif; font-size: 1.05rem; color: var(--oro); }
+  .attivita p { margin: 0 0 .9rem; hyphens: auto; }
+  .attivita > :last-child { margin-bottom: 0; }
+  .attivita blockquote { margin: 0 0 1.1rem; font-style: italic; color: var(--tenue); }
+  .attivita blockquote p { margin: 0 0 .5rem; }
+  .attesa { text-align: center; }
+  .attesa p { hyphens: manual; }
+
+</style>
+</head>
+<body>
+<div class="pagina">
+  <header>
+    <h1>__TITOLO__</h1>
+    <p class="sottotitolo">__SOTTOTITOLO__</p>
+  </header>
+  <nav aria-label="Giorni"></nav>
+  <main></main>
+</div>
+
+<script>
+const GIORNI = /*__DATI__*/[];
+const LUCCHETTO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
+const nav = document.querySelector("nav");
+const main = document.querySelector("main");
+const letti = {};
+
+// In locale (python3 -m http.server) si può simulare un altro giorno: ?oggi=2026-10-12
+// Funziona dal computer e dai telefoni della rete di casa, mai sul sito pubblicato.
+const IN_LOCALE = ["localhost", "127.0.0.1", ""].includes(location.hostname) ||
+                  /^(192\.168\.\d+|10\.\d+\.\d+|172\.(1[6-9]|2\d|3[01])\.\d+)\.\d+$/.test(location.hostname);
+// Vero solo nella copia per i capi (python3 build.py --capi)
+const TUTTO_APERTO = false;
+function adesso() {
+  if (TUTTO_APERTO) return new Date(8.64e15);
+  const prova = new URLSearchParams(location.search).get("oggi");
+  if (prova && IN_LOCALE) {
+    const d = new Date(prova.length <= 10 ? prova + "T12:00" : prova);
+    if (!isNaN(d)) return d;
+  }
+  return new Date();
+}
+
+const apertura = g => new Date(g.apertura);
+const breve = d => d.toLocaleDateString("it-IT", { day: "numeric", month: "short" });
+function quando(d) {
+  let s = d.toLocaleDateString("it-IT", { weekday: "long", day: "numeric", month: "long" });
+  if (d.getHours() || d.getMinutes()) s += " alle " + d.toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit" });
+  return s;
+}
+
+const daBase64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+function leggi(g) {
+  if (letti[g.n]) return letti[g.n];
+  const dati = daBase64(g.c), out = new Uint8Array(dati.length);
+  let seme = new DataView(daBase64(g.k).buffer).getUint32(0, true);
+  for (let i = 0; i < dati.length; i += 4) {
+    // mulberry32, identica a flusso() in build.py
+    seme = (seme + 0x6D2B79F5) | 0;
+    let x = Math.imul(seme ^ (seme >>> 15), 1 | seme);
+    x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x;
+    x = (x ^ (x >>> 14)) >>> 0;
+    for (let j = 0; j < 4 && i + j < dati.length; j++) out[i + j] = dati[i + j] ^ ((x >>> (8 * j)) & 255);
+  }
+  return (letti[g.n] = JSON.parse(new TextDecoder().decode(out)));
+}
+
+let aperti = [];
+async function mostra() {
+  const ora = adesso();
+  aperti = GIORNI.filter(g => apertura(g) <= ora);
+  const ultimo = aperti[aperti.length - 1];
+  const scelto = aperti.find(g => location.hash === "#g" + g.n) || ultimo;
+
+  nav.replaceChildren(...GIORNI.map(g => {
+    const aperto = aperti.includes(g);
+    const el = document.createElement(aperto ? "a" : "span");
+    el.className = "tappa " + (aperto ? "aperta" : "chiusa") + (g === scelto ? " scelta" : "");
+    if (aperto) el.href = "#g" + g.n;
+    else el.title = "Si apre " + quando(apertura(g));
+    if (g === scelto) el.setAttribute("aria-current", "page");
+    el.setAttribute("aria-label", `Giorno ${g.n}, ${quando(apertura(g))}`);
+    el.innerHTML = `<span class="cerchio">${aperto ? g.n : LUCCHETTO}</span>` +
+                   `<span class="etichetta">${breve(apertura(g))}</span>`;
+    return el;
+  }));
+
+  if (!scelto) {
+    main.innerHTML = `<article class="attesa"><p class="giorno">Prima della partenza</p>
+      <h2>Il viaggio non è ancora cominciato</h2>
+      <p>Il primo spunto si aprirà ${quando(apertura(GIORNI[0]))}.</p></article>`;
+    return;
+  }
+
+  const { titolo, html, img, attivita } = leggi(scelto);
+  main.innerHTML = `<article>${img ? `<img class="illustrazione" src="${img}" alt="">` : ""}<p class="giorno">Giorno ${scelto.n}</p><h2>${titolo}</h2>${html}</article>` +
+    (attivita ? `<section class="attivita">${attivita}</section>` : "");
+}
+
+addEventListener("hashchange", () => { mostra(); scrollTo(0, 0); });
+// Se la pagina resta aperta a cavallo dell'apertura, il nuovo giorno compare da solo
+setInterval(() => { if (GIORNI.filter(g => apertura(g) <= adesso()).length !== aperti.length) mostra(); }, 30000);
+mostra();
+</script>
+</body>
+</html>
