@@ -33,8 +33,9 @@ Sito statico con uno spunto al giorno: ogni giorno si apre solo alla sua data.
 python3 build.py --capi
 ```
 
-crea `capi.html` con tutti i giorni già aperti: un unico file da mandare come allegato.
-Il sito in `docs/` non viene toccato. Non caricare `capi.html` su GitHub.
+crea `capi/index.html` con tutti i giorni già aperti: un unico file da mandare come allegato
+o da caricare in un repository GitHub separato (Pages dalla cartella principale).
+Il sito in `docs/` non viene toccato. Non caricare la cartella `capi/` nel repository dei ragazzi.
 
 ## Pubblicazione su GitHub Pages
 

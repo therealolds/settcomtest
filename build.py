@@ -20,7 +20,7 @@ IMMAGINI = {".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png", ".
 USCITA = RADICE / "docs" / "index.html"
 # python3 build.py --capi: copia con tutti i giorni già aperti, da mandare agli altri capi.
 # Va in un file a parte, così il sito pubblicato in docs/ resta bloccato.
-USCITA_CAPI = RADICE / "capi.html"
+USCITA_CAPI = RADICE / "capi" / "index.html"
 
 
 def inline(testo):
